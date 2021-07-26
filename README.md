@@ -83,8 +83,8 @@ sudo apt-get install libgtk2.0-dev pkc-config -y
 Additionally, it is also recommended to create a python virtual environment and install numpy==1.19.1 **BEFORE** building OpenCV. Then, build OpenCV following the previous guide using this new environment.
 ```bash
 sudo pip3 install -U virtualenv==15.1.0
-python3 -m virtualenv -p python3 ~/venv_bt
-source ~/venv_bt/bin/activate
+python3 -m virtualenv -p python3 ~/venv_opencv
+source ~/venv_opencv/bin/activate
 pip install numpy==1.19.1
 ```
 

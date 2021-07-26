@@ -76,10 +76,11 @@ An **IMPORTANT** prerequisite is to build OpenCV with GSTREAMER support. Regular
 I recommend you to install the following libraries and follow this [guide](https://galaktyk.medium.com/how-to-build-opencv-with-gstreamer-b11668fa09c). Anyway, you can first run the code before checking if it you need to build OpenCV from source or not.
 
 ```bash
-sudo apt-get install -y  libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libjpeg-dev libavresample-dev; apt autoremove -y 
-sudo apt-get install -y libwebp-dev libtiff-dev; apt autoremove -y
+sudo apt-get install -y  libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libjpeg-dev libavresample-dev; sudo apt autoremove -y 
+sudo apt-get install -y libwebp-dev libtiff-dev; sudo apt autoremove -y
+sudo apt-get install libgtk2.0-dev pkc-config -y
 ```
-
+Additionally, it is also recommended to create a python virtual environment and install numpy==1.19.1 before building OpenCV. Then, build OpenCV following the previous guide using this new environment.
 The pipeline for OpenCV will be the following:
 ```python
 gs_pipeline = 'nvarguscamerasrc sensor-id=0 ! ' \
@@ -96,3 +97,7 @@ And finally, the sink is an **appsink**
 For further details run and check the [camera_opencv.py](camera_opencv.py) file.
 
 Running this, you should watch the video from the camera on your screen display.
+
+```bash
+python camera_opencv.py --sensor_id 0 --width 1920 --height 1080 --fps 25
+```

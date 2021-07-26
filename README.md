@@ -80,7 +80,14 @@ sudo apt-get install -y  libavcodec-dev libavformat-dev libavutil-dev libswscale
 sudo apt-get install -y libwebp-dev libtiff-dev; sudo apt autoremove -y
 sudo apt-get install libgtk2.0-dev pkc-config -y
 ```
-Additionally, it is also recommended to create a python virtual environment and install numpy==1.19.1 before building OpenCV. Then, build OpenCV following the previous guide using this new environment.
+Additionally, it is also recommended to create a python virtual environment and install numpy==1.19.1 **BEFORE** building OpenCV. Then, build OpenCV following the previous guide using this new environment.
+```bash
+sudo pip3 install -U virtualenv==15.1.0
+python3 -m virtualenv -p python3 ~/venv_bt
+source ~/venv_bt/bin/activate
+pip install numpy==1.19.1
+```
+
 The pipeline for OpenCV will be the following:
 ```python
 gs_pipeline = 'nvarguscamerasrc sensor-id=0 ! ' \
@@ -91,7 +98,7 @@ gs_pipeline = 'nvarguscamerasrc sensor-id=0 ! ' \
               'video/x-raw, format=(string)BGR ! appsink'
 ```
 
-In short, the pipeline is very similiar, we only add the **videoconvert** element to convert the images to BGR format, which is format preferred by OpenCV. 
+In short, the pipeline is very similiar, we only add the **videoconvert** element to convert the images to the BGR format, which is the preferred format by OpenCV. 
 And finally, the sink is an **appsink**
 
 For further details run and check the [camera_opencv.py](camera_opencv.py) file.

@@ -40,7 +40,7 @@ Now, we will go directly to the pipelines needed to obtain the video from CSI ca
 We start running GStreamer on the linux terminal.
 
 ```bash
-gst-launch-1.0 nvarguscamerasrc sensor-id=0 ! "video/x-raw(memory:NVMM), width=(int)640, height=(int)360, format=(string)NV12, framerate=(fraction)25/1" !  nvvidconv ! "video/x-raw, format=(string)BGRx" ! nvvidconv ! omxh264enc ! "video/x-h264,stream-format=(string)byte-stream" ! h264parse ! qtmux ! filesink location=test.mp4
+gst-launch-1.0 nvarguscamerasrc sensor-id=0 ! "video/x-raw(memory:NVMM), width=(int)640, height=(int)360, format=(string)NV12, framerate=(fraction)25/1" !  nvvidconv ! "video/x-raw, format=(string)BGRx" ! nvvidconv ! omxh264enc ! "video/x-h264,stream-format=(string)byte-stream" ! h264parse ! qtmux ! filesink location=test.mp4 -e
 ```
 * **nvarguscamerasrc**: NVIDIA plugin for reading CSI cameras
   * sensor-id: It is the id of the CSI interface
